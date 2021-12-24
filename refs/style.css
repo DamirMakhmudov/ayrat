@@ -1,0 +1,10 @@
+.custom-caption{
+  text-align: center;
+  padding: 12px;
+  color: white;
+  background-color: rgba(0, 0, 0, .3)
+}
+.my-card{
+  width: 20%;
+  margin: 10px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+  <link href="./refs/style.css" rel="stylesheet" type="text/css">
+  <title>Ay</title>
+</head>
+
+<body>
+  <div id="master-app"></div>
+
+  <script>
+    /* backend functions from spreadsheet */
+    // var dialog = <?= dialog ?>;
+    // var model = JSON.parse(<?= getModel(dialog) ?>);
+
+    function saveDataJS() {
+      google.script.run.withSuccessHandler(closeModal).saveDataGS(model.dialog, JSON.stringify(model.modefiedArr));
+    }
+
+    function closeModal(message){
+      google.script.host.close();
+    }
+
+    function printDataJS() {
+      google.script.run.withSuccessHandler(openUrl).printDataGS(model.dialog, JSON.stringify(model.selected.val));
+    }
+    
+    function openUrl(url){
+      window.open(url)
+    }
+    
+  </script>
+
+  <!-- Import Vue -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <!-- Import Quasar -->
+  <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.umd.prod.js"></script>
+
+  <!-- Import JS -->
+  <script src="./data.js"></script>
+
+  <!-- Import components -->
+  <script src="./root.js"></script>
+  <!-- <script src="./components/question.js"></script> -->
+  <!-- <script src="./components/employee.js"></script> -->
+  <!-- <script src="./components/editor.js"></script> -->
+  <!-- <script src="./components/datepick.js"></script> -->
+  <!-- <script src="./components/datepicko.js"></script> -->
+  <!-- <script src="./components/reader.js"></script> -->
+  <!-- <script src="./components/selector.js"></script> -->
+
+  <!-- Mount app -->
+  <script>const vm = app.mount('#master-app')</script>
+</body>
+
+</html>
